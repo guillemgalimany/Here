@@ -17,6 +17,7 @@
 		9835CE7A8F2A5B83C3C6D406 /* ofxArtnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3B45B441560B17233E62CC7 /* ofxArtnet.cpp */; };
 		9A24AAE71CFC7C000076752D /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A24AAE31CFC7C000076752D /* Light.cpp */; };
 		9A24AAE81CFC7C000076752D /* Par.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A24AAE51CFC7C000076752D /* Par.cpp */; };
+		9AFA7F051D05B9EA006AD694 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AFA7F031D05B9EA006AD694 /* Cube.cpp */; };
 		C82579070C946892DD20550D /* transmit.c in Sources */ = {isa = PBXBuildFile; fileRef = 97580EF680BFC3FD401308B7 /* transmit.c */; };
 		D9CECC1BF720210B296A11BB /* network.c in Sources */ = {isa = PBXBuildFile; fileRef = 67F576E7043501AD940A179D /* network.c */; };
 		E2564CF7DDB3713772BB682E /* ofxUDPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35BB9BB90DBABFD3B39F8DB6 /* ofxUDPManager.cpp */; };
@@ -76,6 +77,8 @@
 		9A24AAE41CFC7C000076752D /* Light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Light.h; sourceTree = "<group>"; };
 		9A24AAE51CFC7C000076752D /* Par.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Par.cpp; sourceTree = "<group>"; };
 		9A24AAE61CFC7C000076752D /* Par.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Par.h; sourceTree = "<group>"; };
+		9AFA7F031D05B9EA006AD694 /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
+		9AFA7F041D05B9EA006AD694 /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 		BF88F02779DD820913ACEA06 /* ofxTCPClient.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTCPClient.cpp; path = ../../../addons/ofxNetwork/src/ofxTCPClient.cpp; sourceTree = SOURCE_ROOT; };
 		C0ED6090122A9FFCC8B4487B /* receive.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = receive.c; path = ../../../addons/ofxArtnet/libs/artnet/src/receive.c; sourceTree = SOURCE_ROOT; };
 		C8C9B823D7872F9CBF03A813 /* ofxTCPClient.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxTCPClient.h; path = ../../../addons/ofxNetwork/src/ofxTCPClient.h; sourceTree = SOURCE_ROOT; };
@@ -222,6 +225,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				9AFA7F031D05B9EA006AD694 /* Cube.cpp */,
+				9AFA7F041D05B9EA006AD694 /* Cube.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -348,6 +353,7 @@
 				2D3636F9BE4A86C2D8CC403F /* misc.c in Sources */,
 				D9CECC1BF720210B296A11BB /* network.c in Sources */,
 				73ECD6C7FD72E41CA45E8ED8 /* receive.c in Sources */,
+				9AFA7F051D05B9EA006AD694 /* Cube.cpp in Sources */,
 				5EB5F47132F1826A6E2BF452 /* tod.c in Sources */,
 				C82579070C946892DD20550D /* transmit.c in Sources */,
 				960D20B191346612D5C05A6A /* ofxTCPClient.cpp in Sources */,

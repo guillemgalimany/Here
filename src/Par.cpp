@@ -117,10 +117,6 @@ void Par::fadeColor()
         
     if (timeInSeconds>1) {        
         isFadeColor=false;
-        cout << "par";
-        cout << id;
-        cout << color.b <<std::endl;
-
         
     }
 }

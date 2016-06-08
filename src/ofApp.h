@@ -3,16 +3,10 @@
 #include "ofMain.h"
 #include "Light.h"
 #include "ofxNetwork.h"
+#include "Cube.h"
 
 
-enum StateType{
-    
-    STATE_IDLE,
-    STATE_WARMING,
-    STATE_PLAY,
-    STATE_POSTPLAY,
-    STATE_CRISIS
-};
+
 
 
 class ofApp : public ofBaseApp{
@@ -22,11 +16,13 @@ class ofApp : public ofBaseApp{
     void keyPressed(int key);
     void keyReleased(int key);
     
-
+    
 
     void setup();
     void update();
     void draw();
+    void exit();
+
     
     float warmingTime = 1;
     
@@ -42,6 +38,12 @@ class ofApp : public ofBaseApp{
     
     float colorLerpCounter;
     
+    int swingsTempo[5][1];
+    
+    void setIntensityCube();
+    
+    vector<Cube> cubes;
+
     
     		
 };
