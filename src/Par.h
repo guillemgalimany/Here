@@ -67,8 +67,27 @@ public:
     
     void triggerFadeColor(ofColor newColor, float time);
     void fadeColor();
+    float fadeTime;
     
     void draw();
+    
+    bool isSinusoidal = false;
+    
+    float myBrightness;
+    ofColor cubeNewColor;
+    float amplitude;
+    float frequency;
+    void sinusoidalMove();
+    void triggerSinusoidalMove(float amplitude, float frequency);
+    
+    void triggerChangeCubeColor(ofColor newColor_,float amplitude_, float frequency_);
+
+    void changeCubeColor();
+    float cubeTime;
+    float cubeCurrentTime;
+    
+    bool isChangeCubeColor = false;
+
 
 
 

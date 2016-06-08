@@ -39,7 +39,12 @@ public:
     
     string currentColor;
     
-    int maxPar = 6;
+    
+    // PARS AND CUBES
+    int maxPar = 10;
+    int maxCubes = 5;
+    int parXcube;
+    vector<vector<int>> parCubeAssign;
   
     
     void initialize();
@@ -64,6 +69,16 @@ public:
     void fade(int parId, ofColor color, float time);
     
     void update();
+    
+    void lightTheCube(int id, ofColor targetColor, float amplitude);
+    
+    
+    long map(long x, long in_min, long in_max, long out_min, long out_max)
+    {
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    }
+    
+
 
 
 

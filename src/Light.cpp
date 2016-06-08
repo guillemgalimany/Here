@@ -23,13 +23,19 @@ void Light::initialize(){
 
     
     for (int i = 0; i < maxPar; i++){
-        Par temPar(colors[0],i);            //inicialitza amb qualsevol color!
+        Par temPar(colors[0],i);
         pars.push_back(temPar);
     }
-
-    //idxButtonPars[0] = 0;
-    //idxButtonPars[1] = 1;
     
+    parXcube = maxPar / maxCubes;
+    
+    vector<vector<int>> tempMatrix(maxCubes, vector<int>(parXcube));
+    parCubeAssign = tempMatrix;
+    
+    for (int i = 0; i < maxCubes; i++){
+        for (int j = 0; j < (parXcube); j++)
+            parCubeAssign[i][j] = i*(parXcube) +j;
+    }
 
     vector<unsigned char> tempPackDMX(maxPar*3);
     packDMX = tempPackDMX;
@@ -203,6 +209,32 @@ void Light::fade(int parId, ofColor newColor, float time)
     }
     
 }
+
+void Light::lightTheCube(int id, ofColor targetColor, float amplitude)
+{
+    
+    vector<int> parsToUseIndex = parCubeAssign [id-1];
+    
+    for (int i = 0 ; i < parsToUseIndex.size();i++)
+    {
+//        ofColor tempColor = ofColor(0,255,0);
+//        //
+//        tempColor.lerp(ofColor(0,0,255), lerpFactor);
+//        
+//        pars[parsToUseIndex[i]].triggerFadeColor(tempColor, 0.5);
+
+            
+//        pars[parsToUseIndex[i]].setColor(ofColor(0,0,255*(amplitude/6)));
+//        
+//        pars[parsToUseIndex[i]].triggerSinusoidalMove(50, 0.5);
+        
+        pars[parsToUseIndex[i]].triggerChangeCubeColor(ofColor(0,0,255*(amplitude/6)),50, 0.5);
+    
+        
+    }
+    
+}
+
 
 void Light::update()
 {

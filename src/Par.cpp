@@ -30,6 +30,13 @@ void Par::update(){
     if (isFadeColor)
         fadeColor();
     
+    if (isSinusoidal)
+        sinusoidalMove();
+    
+    if (isChangeCubeColor)
+        changeCubeColor();
+    
+    
     draw();
     
 }
@@ -101,6 +108,7 @@ void Par::triggerFadeColor(ofColor newColor, float time)
     myNewColor = newColor;
     isFadeColor = true;
     timef = ofGetElapsedTimeMillis();
+    fadeTime = time;
     
     //setColor(myNewColor);
 
@@ -111,14 +119,82 @@ void Par::fadeColor()
 {
     float currentTime = ofGetElapsedTimeMillis();
     
-    float timeInSeconds = ((float)ofGetElapsedTimeMillis() - (float)timef)/10000;
+    float timeInSeconds = ((float)ofGetElapsedTimeMillis() - (float)timef)/(10000);
     
-    color.lerp(myNewColor,timeInSeconds);
+    color.lerp(myNewColor,timeInSeconds * fadeTime);
         
-    if (timeInSeconds>1) {        
+    if (timeInSeconds>fadeTime)
+    {
         isFadeColor=false;
-        
     }
+}
+
+void Par::triggerSinusoidalMove(float amplitude_, float frequency_) //modula el color actual reduint-ne la intensitat i tornant-la a augmentar de forma sinusoidal
+{
+    
+    amplitude = amplitude_;
+    frequency = frequency_;
+    
+    myBrightness = color.getBrightness();
+    
+    isSinusoidal = true;
+    
+    
+}
+
+void Par::sinusoidalMove() //modula el color actual reduint-ne la intensitat i tornant-la a augmentar de forma sinusoidal
+{
+    
+    color.setBrightness(myBrightness + amplitude * sin (ofGetElapsedTimeMillis()*frequency)/(1000));
+    
+}
+
+void Par::triggerChangeCubeColor(ofColor newColor_,float amplitude_, float frequency_)
+{
+    
+    //actualitzo parametres oscilacio
+    amplitude = amplitude_;
+    frequency = frequency_;
+    
+    cubeNewColor = newColor_;
+    
+    //deixo de fer sinusoides
+    isSinusoidal = false;
+    
+    //assigno el color al que em vull fadejar
+    myNewColor = cubeNewColor;
+    
+    //guardo el moment en el que començo a canviar de color
+    timef = ofGetElapsedTimeMillis();
+    
+    //temps que trigare a fadejar
+    fadeTime = 0.5;
+    
+    //entro al loop de fer fade
+    isFadeColor = true;
+    
+    //entro al loop de comprovar quan s'acaba el fade per començar a sinusoidar
+    isChangeCubeColor = true;
+
+
+}
+
+void Par::changeCubeColor()
+{
+
+    ofLog() << "timef" << " - " << timef;
+
+    
+    if (ofGetElapsedTimeMillis() - timef > 500)
+    {
+        myBrightness = color.getBrightness();
+        
+        isSinusoidal = true;
+        
+        isChangeCubeColor = false;
+    }
+    
+
 }
 
 void Par::draw()

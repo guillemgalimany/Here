@@ -39,7 +39,22 @@ void Cube::setIntensityLevel(int intensityLevel_){
     
     ofLog() << id << " - " << intensityLevel;
     
+    if (prevIntensityLevel!=intensityLevel_)
+    {
+        sendToLight();
+    }
+    
+    prevIntensityLevel = intensityLevel_;
     
 
     
 }
+
+void Cube::sendToLight()
+{
+    
+    Light::getInstance().lightTheCube(id, ofColor(1), intensityLevel);
+
+}
+
+

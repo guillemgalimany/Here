@@ -12,6 +12,9 @@
 #include <stdio.h>
 #include <iostream>
 
+#include "Light.h"
+
+
 #endif /* Cube_h */
 
 
@@ -30,6 +33,10 @@ public:
     Cube (int, int, int);
     
     void update();
+    
+    void sendToLight();
+    
+    int prevIntensityLevel;
 
     
 };
