@@ -39,7 +39,7 @@ void Cube::setIntensityLevel(int intensityLevel_){
     
     ofLog() << id << " - " << intensityLevel;
     
-    if (prevIntensityLevel!=intensityLevel_)
+    if (prevIntensityLevel != intensityLevel_)
     {
         sendToLight();
     }

@@ -15,7 +15,7 @@ void Light::initialize(){
     artnet.setup("192.168.1.125"); //IP ordinador
 #endif    
  
-    ofColor  color(0,255,0);
+    ofColor  color(0,100,0);
     colors.push_back(color);
     
     //color.set(0, 0, 255);
@@ -222,13 +222,12 @@ void Light::lightTheCube(int id, ofColor targetColor, float amplitude)
 //        tempColor.lerp(ofColor(0,0,255), lerpFactor);
 //        
 //        pars[parsToUseIndex[i]].triggerFadeColor(tempColor, 0.5);
-
             
 //        pars[parsToUseIndex[i]].setColor(ofColor(0,0,255*(amplitude/6)));
 //        
-//        pars[parsToUseIndex[i]].triggerSinusoidalMove(50, 0.5);
+        pars[parsToUseIndex[i]].triggerSinusoidalMove(50, 1);
         
-        pars[parsToUseIndex[i]].triggerChangeCubeColor(ofColor(0,0,255*(amplitude/6)),50, 0.5);
+//        pars[parsToUseIndex[i]].triggerChangeCubeColor(ofColor(0,0,255*(amplitude/6)),50, 0.5);
     
         
     }
