@@ -121,11 +121,15 @@ void Par::fadeColor()
     
     float timeInSeconds = ((float)ofGetElapsedTimeMillis() - (float)timef)/(10000);
     
-    color.lerp(myNewColor,timeInSeconds * fadeTime);
+    color.lerp(myNewColor, timeInSeconds * fadeTime);
         
-    if (timeInSeconds>fadeTime)
+    if (timeInSeconds > fadeTime)
     {
         isFadeColor=false;
+        
+        myBrightness = color.getBrightness();
+        
+        isSinusoidal = true;
     }
 }
 
@@ -145,7 +149,7 @@ void Par::triggerSinusoidalMove(float amplitude_, float frequency_) //modula el 
 void Par::sinusoidalMove() //modula el color actual reduint-ne la intensitat i tornant-la a augmentar de forma sinusoidal
 {
     
-    color.setBrightness(myBrightness + (sin (ofGetElapsedTimeMillis()*0.001)) * amplitude );
+    color.setBrightness(myBrightness + (sin ((float)ofGetElapsedTimeMillis()*0.001)) * amplitude );
     
     //color.setBrightness(200+ sin(ofGetElapsedTimeMillis()*0.001) * 50);
     
@@ -178,7 +182,7 @@ void Par::triggerChangeCubeColor(ofColor newColor_,float amplitude_, float frequ
     //entro al loop de comprovar quan s'acaba el fade per començar a sinusoidar
     //isChangeCubeColor = true;
     
-    triggerSinusoidalMove(amplitude,frequency);
+    //triggerSinusoidalMove(amplitude,frequency);
     
 
 }

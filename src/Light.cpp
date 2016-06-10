@@ -15,11 +15,25 @@ void Light::initialize(){
     artnet.setup("192.168.1.125"); //IP ordinador
 #endif    
  
-    ofColor  color(0,100,0);
+    //CUBE 1
+    ofColor color(0,100,0);
     colors.push_back(color);
     
-    //color.set(0, 0, 255);
-    //colors.push_back(color);
+    //CUBE 2
+    color.set(0, 0, 255);
+    colors.push_back(color);
+    
+    //CUBE 3
+    color.set(0, 255, 0);
+    colors.push_back(color);
+    
+    //CUBE 4
+    color.set(0, 100, 100);
+    colors.push_back(color);
+    
+    //CUBE 5
+    color.set(100, 0, 50);
+    colors.push_back(color);
 
     
     for (int i = 0; i < maxPar; i++){
@@ -39,6 +53,20 @@ void Light::initialize(){
 
     vector<unsigned char> tempPackDMX(maxPar*3);
     packDMX = tempPackDMX;
+    
+    
+    
+    
+    for (int id = 0; id < maxCubes+1; id++)
+    {
+        vector<int> parsToUseIndex = parCubeAssign [id-1];
+
+        for (int i = 0 ; i < parsToUseIndex.size();i++)
+        {
+            pars[parsToUseIndex[i]].setColor(colors[id-1]);
+        }
+    }
+    
     
     this->getInfo();
 }
@@ -225,9 +253,9 @@ void Light::lightTheCube(int id, ofColor targetColor, float amplitude)
             
 //        pars[parsToUseIndex[i]].setColor(ofColor(0,0,255*(amplitude/6)));
 //        
-        pars[parsToUseIndex[i]].triggerSinusoidalMove(50, 1);
+//        pars[parsToUseIndex[i]].triggerSinusoidalMove(50, 1);
         
-//        pars[parsToUseIndex[i]].triggerChangeCubeColor(ofColor(0,0,255*(amplitude/6)),50, 0.5);
+        pars[parsToUseIndex[i]].triggerChangeCubeColor(ofColor(0,0,55+200*(amplitude/6)),30, 0.5);
     
         
     }

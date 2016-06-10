@@ -36,7 +36,7 @@ public:
     float topFade = 0.3;
     int type=1;
     
-    bool isFadeColor;
+    bool isFadeColor = false;
     ofColor myNewColor;
 
 
