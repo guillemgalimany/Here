@@ -8,13 +8,35 @@
 #include "Light.h"
 
 
+
 void Light::initialize(){
-#if TARGET_RASPBERRY_PI
-    artnet.setup("192.168.1.138"); //IP de rPi
-#else
-    artnet.setup("192.168.1.125"); //IP ordinador
-#endif    
- 
+    
+//    while( isNodeConnected == false )
+//    {
+//    
+//        try {
+
+            #if TARGET_RASPBERRY_PI
+                artnet.setup("192.168.1.138"); //IP de rPi
+            #else
+                artnet.setup("192.168.1.125"); //IP ordinador
+            #endif 
+            
+//            isNodeConnected = true;
+//
+//        }
+//        catch (...){
+//            
+//            isNodeConnected = false;
+//            
+//            ofLog() << "trying to connect";
+//
+//
+//        }
+//        
+//        usleep(500);
+//    }
+//    
     //CUBE 1
     ofColor color(0,100,0);
     colors.push_back(color);
@@ -51,7 +73,8 @@ void Light::initialize(){
             parCubeAssign[i][j] = i*(parXcube) +j;
     }
 
-    vector<unsigned char> tempPackDMX(maxPar*3);
+    //vector<unsigned char> tempPackDMX(maxPar*3);
+    vector<unsigned char> tempPackDMX(512);
     packDMX = tempPackDMX;
     
     
@@ -92,7 +115,25 @@ void Light::getInfo(){
 
 void Light::sendInfo(){
     
-    artnet.sendDmx("192.168.1.151",&packDMX[0], packDMX.size());
+    //artnet.sendDmx("192.168.1.151",&packDMX[0], packDMX.size());
+    
+        try {
+            
+            artnet.sendDmx("192.168.1.151",&packDMX[0], packDMX.size());
+
+        }
+        catch (...){
+
+            #if TARGET_RASPBERRY_PI
+                        artnet.setup("192.168.1.138"); //IP de rPi
+            #else
+                        artnet.setup("192.168.1.125"); //IP ordinador
+            #endif
+            
+            ofLog() << "trying to connect";
+
+
+        }
 }
 
 

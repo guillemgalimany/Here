@@ -79,6 +79,8 @@ public:
     }
     
 
+    
+    bool isNodeConnected = false;
 
 
 
